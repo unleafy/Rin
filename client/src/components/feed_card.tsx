@@ -113,8 +113,8 @@ export function FeedCard({ id, title, avatar, draft, listed, top, summary, hasht
     const body = (
         <GlassSurface
             cornerRadius={activeVariant === "editorial" ? 28 : 16}
-            refraction={activeVariant === "editorial" ? 14 : 12}
-            blur={3}
+            refraction={activeVariant === "editorial" ? 10 : 9}
+            blur={7}
             className={styles.card}
             contentClassName={activeVariant === "editorial" ? "p-3" : "p-6"}
         >

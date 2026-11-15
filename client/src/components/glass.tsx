@@ -14,7 +14,7 @@ import type { CSSProperties, ReactNode } from "react";
 // backdrop gently instead of scattering busy light.
 const CALM_OPTICS = {
   refraction: 12,
-  bezel: 0.25,
+  bezel: 0.2,
   chroma: 0.02,
   specular: 0.35,
   specularWidth: 1.5,

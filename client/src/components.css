@@ -14,11 +14,11 @@
     .rin-glass-panel {
         display: block;
         color: rgb(var(--rin-text-rgb));
-        --lg-tint: rgb(255 255 255 / 0.35);
+        --lg-tint: rgb(255 255 255 / 0.52);
     }
 
     [data-color-mode="dark"] .rin-glass-panel {
-        --lg-tint: rgb(255 255 255 / 0.1);
+        --lg-tint: rgb(255 255 255 / 0.18);
     }
 
     /* Before the custom element is upgraded (or if its script fails to
@@ -43,4 +43,15 @@
             inset 0 -1px 0 rgb(255 255 255 / 0.06),
             0 12px 40px rgb(0 0 0 / 0.35);
     }
+}
+
+/* The library sets lg-panel to display:block, whose vertical margins
+   collapse away inside the feed's column/flex layouts — cards ended up
+   touching each other. inline-block restores the original card spacing
+   (the old card div was inline-block too); header surfaces sit in flex
+   containers, where items are blockified anyway. Unlayered on purpose:
+   it must beat the library's injected element styles. */
+.rin-glass-panel {
+    display: inline-block;
+    vertical-align: top;
 }

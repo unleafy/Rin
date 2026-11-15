@@ -15,7 +15,7 @@ export const classicLayoutDefinition: HeaderLayoutDefinition = {
           <GlassSurface
             cornerRadius={9999}
             refraction={10}
-            blur={2}
+            blur={4}
             className="min-w-0 max-w-full"
             contentClassName="scrollbar-none flex min-w-max flex-row items-center whitespace-nowrap overflow-x-auto px-2"
           >
@@ -36,7 +36,7 @@ export const classicLayoutDefinition: HeaderLayoutDefinition = {
           <GlassSurface
             cornerRadius={9999}
             refraction={10}
-            blur={2}
+            blur={4}
             className="w-full"
             contentClassName="flex flex-row items-center px-2"
           >

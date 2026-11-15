@@ -59,7 +59,7 @@ export function MobileTopHeader({
         <GlassSurface
           cornerRadius={0}
           refraction={8}
-          blur={2}
+          blur={4}
           className="w-full"
           contentClassName="flex w-full items-center justify-between gap-3 px-4 py-2"
         >
