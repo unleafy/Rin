@@ -36,7 +36,7 @@ export function AppRoutes() {
   const { t } = useTranslation();
 
   return (
-    <div data-lg-backdrop="#rin-bg-img">
+    <>
       <SiteBackground />
       <Switch>
       <AppRoute path="/">
@@ -133,7 +133,7 @@ export function AppRoutes() {
         <ErrorPage error={t("error.not_found")} />
       </AppRoute>
       </Switch>
-    </div>
+    </>
   );
 }
 

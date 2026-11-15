@@ -1,5 +1,4 @@
 import { BrandLink, HeaderActions, MobileTopHeader, NavBar } from "..";
-import { GlassSurface } from "../../glass";
 import { PreviewActions, PreviewBrand, PreviewCanvas, PreviewContent, PreviewNav } from "../preview-primitives";
 import type { HeaderLayoutDefinition } from "../layout-types";
 
@@ -34,15 +33,9 @@ export const compactLayoutDefinition: HeaderLayoutDefinition = {
         {isAtTop ? (
           <div className="flex items-center justify-between gap-8 px-4 py-3">{barContent}</div>
         ) : (
-          <GlassSurface
-            cornerRadius={0}
-            refraction={8}
-            blur={4}
-            className="w-full"
-            contentClassName="flex items-center justify-between gap-8 px-4 py-3"
-          >
+          <div className={`flex items-center justify-between gap-8 px-4 py-3 ${siteConfig.backgroundImage?.trim() ? "bg-w/75 shadow-[0_8px_30px_rgb(15_23_42/0.08)] backdrop-blur-xl" : "bg-white/20 backdrop-blur-xl"}`}>
             {barContent}
-          </GlassSurface>
+          </div>
         )}
       </div>
     );

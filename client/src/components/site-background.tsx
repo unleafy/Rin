@@ -13,7 +13,7 @@ export function SiteBackground() {
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
     >
-      <img id="rin-bg-img" src={url} alt="" className="h-full w-full object-cover" />
+      <img src={url} alt="" className="h-full w-full object-cover" />
       <div className="absolute inset-0 bg-white/25 dark:bg-black/35" />
     </div>
   );

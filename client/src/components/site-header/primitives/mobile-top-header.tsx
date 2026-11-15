@@ -1,5 +1,4 @@
 import type { Profile } from "../../../state/profile";
-import { GlassSurface } from "../../glass";
 import { BrandLink } from "./brand-link";
 import { HeaderActions } from "./action-buttons";
 import { Menu } from "./menu";
@@ -56,15 +55,9 @@ export function MobileTopHeader({
       {isAtTop ? (
         <div className="flex w-full items-center justify-between gap-3 px-4 py-2">{barContent}</div>
       ) : (
-        <GlassSurface
-          cornerRadius={0}
-          refraction={8}
-          blur={4}
-          className="w-full"
-          contentClassName="flex w-full items-center justify-between gap-3 px-4 py-2"
-        >
+        <div className={`flex w-full items-center justify-between gap-3 px-4 py-2 ${siteConfig.backgroundImage?.trim() ? "bg-w/75 shadow-[0_8px_30px_rgb(15_23_42/0.08)] backdrop-blur-xl" : "bg-white/20 backdrop-blur-xl"}`}>
           {barContent}
-        </GlassSurface>
+        </div>
       )}
     </div>
   );

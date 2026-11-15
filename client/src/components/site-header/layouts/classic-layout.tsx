@@ -1,5 +1,4 @@
 import { BrandLink, HeaderActions, Menu, NavBar } from "..";
-import { GlassSurface } from "../../glass";
 import { PreviewActions, PreviewBrand, PreviewCanvas, PreviewContent, PreviewNav } from "../preview-primitives";
 import type { HeaderLayoutDefinition } from "../layout-types";
 
@@ -12,15 +11,9 @@ export const classicLayoutDefinition: HeaderLayoutDefinition = {
       <div className="hidden w-full items-center justify-between md:flex">
         <BrandLink siteConfig={siteConfig} className="mr-8 hidden flex-row items-center md:flex" />
         <div className="flex min-w-0 flex-1 items-center justify-center">
-          <GlassSurface
-            cornerRadius={9999}
-            refraction={10}
-            blur={4}
-            className="min-w-0 max-w-full"
-            contentClassName="scrollbar-none flex min-w-max flex-row items-center whitespace-nowrap overflow-x-auto px-2"
-          >
+          <div className={`scrollbar-none flex min-w-max flex-row items-center whitespace-nowrap overflow-x-auto rounded-full px-2 shadow-xl shadow-light ${siteConfig.backgroundImage?.trim() ? "bg-w/80 backdrop-blur-xl" : "bg-w"}`}>
             <NavBar menu={false} itemClassName="whitespace-nowrap px-3 py-3 md:p-3 text-[15px]" />
-          </GlassSurface>
+          </div>
         </div>
         <div className="ml-8 hidden flex-row items-center space-x-2 md:flex">
           {children ? <div className="flex items-center text-sm t-primary">{children}</div> : null}
@@ -33,13 +26,7 @@ export const classicLayoutDefinition: HeaderLayoutDefinition = {
     return (
       <div className="flex w-full flex-row items-center justify-center md:hidden">
         <div className="w-full flex-row items-center justify-center transition-all duration-500">
-          <GlassSurface
-            cornerRadius={9999}
-            refraction={10}
-            blur={4}
-            className="w-full"
-            contentClassName="flex flex-row items-center px-2"
-          >
+          <div className={`flex w-full flex-row items-center rounded-full px-2 shadow-xl shadow-light ${siteConfig.backgroundImage?.trim() ? "bg-w/80 backdrop-blur-xl" : "bg-w"}`}>
             <BrandLink
               siteConfig={siteConfig}
               compact
@@ -50,7 +37,7 @@ export const classicLayoutDefinition: HeaderLayoutDefinition = {
               {children ? <div className="flex items-center text-sm t-primary">{children}</div> : null}
               <Menu profile={profile} />
             </div>
-          </GlassSurface>
+          </div>
         </div>
       </div>
     );
