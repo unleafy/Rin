@@ -145,6 +145,7 @@ function FriendList({ title, show, friends }: { title: string, show: boolean, fr
 
 function Friend({ friend }: { friend: FriendItem }) {
     const { t } = useTranslation()
+    const siteConfig = useSiteConfig();
     const profile = useContext(ProfileContext)
     const [avatar, setAvatar] = useState(friend.avatar)
     const [name, setName] = useState(friend.name)
@@ -199,7 +200,7 @@ function Friend({ friend }: { friend: FriendItem }) {
     ]
     return (
         <>
-            <a title={friend.name} href={friend.url} target="_blank" rel="noopener noreferrer" className="relative flex min-w-0 w-full flex-col items-center justify-center overflow-hidden rounded-xl bg-w p-4 bg-button">
+            <a title={friend.name} href={friend.url} target="_blank" rel="noopener noreferrer" className={`relative flex min-w-0 w-full flex-col items-center justify-center overflow-hidden rounded-xl p-4 bg-button ${siteConfig.backgroundImage?.trim() ? "border border-black/5 bg-w/95 shadow-[0_12px_40px_rgb(15_23_42/0.14)] backdrop-blur-md dark:border-white/10" : "bg-w"}`}>
                 <ImageWithFallback
                     className="h-16 w-16 rounded-full"
                     imageClassName={friend.health.length > 0 ? "grayscale" : ""}

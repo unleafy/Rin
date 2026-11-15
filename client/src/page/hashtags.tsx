@@ -88,7 +88,7 @@ export function HashtagsPage() {
                         {sortedHashtags?.map((hashtag, index) => {
                             return (
                                 <div key={index} className="flex min-w-0 w-full flex-row">
-                                    <div className="m-2 flex min-w-0 w-full flex-row items-center space-x-4 rounded-2xl duration-300">
+                                    <div className={`m-2 flex min-w-0 w-full flex-row items-center space-x-4 rounded-2xl duration-300 ${siteConfig.backgroundImage?.trim() ? "border border-black/5 bg-w/95 px-4 py-2 shadow-[0_6px_24px_rgb(15_23_42/0.10)] backdrop-blur-md dark:border-white/10" : ""}`}>
                                         <Link href={`/hashtag/${hashtag.name}`} className="min-w-0 text-base t-primary hover:text-theme text-pretty">
                                             <HashTag name={hashtag.name} />
                                         </Link>
