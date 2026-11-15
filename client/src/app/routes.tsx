@@ -5,6 +5,7 @@ import { Route, Switch } from "wouter";
 import { AdminLayout } from "../components/admin-layout";
 import Footer from "../components/footer";
 import { Header } from "../components/header";
+import { SiteBackground } from "../components/site-background";
 import { Padding } from "../components/padding";
 import { getHeaderLayoutDefinition } from "../components/site-header/layout-registry";
 import { Tips, TipsPage } from "../components/tips";
@@ -35,7 +36,9 @@ export function AppRoutes() {
   const { t } = useTranslation();
 
   return (
-    <Switch>
+    <div data-lg-backdrop="#rin-bg-img">
+      <SiteBackground />
+      <Switch>
       <AppRoute path="/">
         <FeedsPage />
       </AppRoute>
@@ -129,7 +132,8 @@ export function AppRoutes() {
       <AppRoute>
         <ErrorPage error={t("error.not_found")} />
       </AppRoute>
-    </Switch>
+      </Switch>
+    </div>
   );
 }
 

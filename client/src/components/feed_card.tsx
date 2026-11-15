@@ -7,6 +7,7 @@ import { drawBlurhashToCanvas } from "../utils/blurhash";
 import { parseImageUrlMetadata } from "../utils/image-upload";
 import { useImageLoadState } from "../utils/use-image-load-state";
 import { type FeedCardVariant, normalizeFeedCardVariant } from "./feed-card-options";
+import { GlassSurface } from "./glass";
 import { useSiteConfig } from "../hooks/useSiteConfig";
 
 function FeedCardImage({ src, variant }: { src: string; variant: FeedCardVariant }) {
@@ -73,14 +74,14 @@ const FEED_CARD_STYLES: Record<
     }
 > = {
     default: {
-        card: "my-2 inline-block w-full break-inside-avoid rounded-2xl bg-w p-6 duration-300 bg-button",
+        card: "my-2 w-full break-inside-avoid duration-300",
         imageWrap: "",
         meta: "text-gray-400 text-sm",
         summary: "line-clamp-4 text-pretty overflow-hidden dark:text-neutral-500",
         title: "break-words text-xl font-bold text-gray-700 dark:text-white text-pretty overflow-hidden [overflow-wrap:anywhere]",
     },
     editorial: {
-        card: "my-3 inline-block w-full break-inside-avoid overflow-hidden rounded-[28px] border border-black/10 bg-w p-3 shadow-[0_24px_60px_rgba(15,23,42,0.08)] transition-all hover:-translate-y-0.5 hover:shadow-[0_28px_70px_rgba(15,23,42,0.12)] dark:border-white/10",
+        card: "my-3 w-full break-inside-avoid duration-300 hover:-translate-y-0.5",
         imageWrap: "mb-3 overflow-hidden rounded-[22px] border border-black/5 dark:border-white/10",
         meta: "text-[12px] font-medium uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400",
         summary: "line-clamp-5 text-pretty text-[15px] leading-7 text-neutral-600 dark:text-neutral-300",
@@ -110,7 +111,13 @@ export function FeedCard({ id, title, avatar, draft, listed, top, summary, hasht
     const activeVariant = normalizeFeedCardVariant(variant ?? siteConfig.feedCardVariant);
     const styles = FEED_CARD_STYLES[activeVariant];
     const body = (
-        <div className={styles.card}>
+        <GlassSurface
+            cornerRadius={activeVariant === "editorial" ? 28 : 16}
+            refraction={activeVariant === "editorial" ? 14 : 12}
+            blur={3}
+            className={styles.card}
+            contentClassName={activeVariant === "editorial" ? "p-3" : "p-6"}
+        >
             {avatar ? (
                 <div className={styles.imageWrap}>
                     <FeedCardImage src={avatar} variant={activeVariant} />
@@ -142,7 +149,7 @@ export function FeedCard({ id, title, avatar, draft, listed, top, summary, hasht
                     </div>
                 }
             </div>
-        </div>
+        </GlassSurface>
     );
 
     return preview ? body : <Link href={`/feed/${id}`} target="_blank" rel="noopener noreferrer" className="block min-w-0 w-full">{body}</Link>;

@@ -97,6 +97,7 @@ export function Settings() {
   const aiValue = useMemo(() => buildAIConfigDraftValue(draft, hasStoredAiApiKey), [draft, hasStoredAiApiKey]);
   const hasUnsavedChanges = !areSettingsDraftsEqual(draft, initialDraft);
   const themeColorValue = normalizeThemeColor(String(clientConfig.get("theme.color") ?? "#fc466b"));
+  const backgroundImageValue = String(clientConfig.get("background.image") ?? "");
   const feedLayoutValue = normalizeFeedLayout(String(clientConfig.get("feed.layout") ?? "list"));
   const feedCardVariantValue = normalizeFeedCardVariant(String(clientConfig.get("feed.card_variant") ?? "default"));
   const previewSiteName = String(clientConfig.get("site.name") ?? clientConfig.default("site.name") ?? "Rin");
@@ -393,6 +394,38 @@ export function Settings() {
                       <span className="text-sm t-primary">{t("settings.theme_color.custom")}</span>
                     </label>
                   </div>
+                </SettingsCardBody>
+              </div>
+              <div className="mt-4 border-t border-black/5 pt-4 dark:border-white/10">
+                <SettingsCardRow
+                  header={
+                    <SettingsCardHeader
+                      title={t("settings.background_image.title")}
+                      description={t("settings.background_image.desc")}
+                    />
+                  }
+                  action={
+                    backgroundImageValue ? (
+                      <img
+                        src={backgroundImageValue}
+                        alt=""
+                        className="h-9 w-14 rounded-lg object-cover ring-1 ring-black/10 dark:ring-white/10"
+                      />
+                    ) : (
+                      <span className="text-sm text-neutral-400">{t("settings.background_image.empty")}</span>
+                    )
+                  }
+                />
+                <SettingsCardBody>
+                  <input
+                    type="text"
+                    value={backgroundImageValue}
+                    placeholder="https://example.com/background.jpg"
+                    onChange={(event) => {
+                      setConfigValue("client", "background.image", event.target.value);
+                    }}
+                    className="w-full rounded-xl border border-black/10 bg-w px-4 py-3 text-sm t-primary outline-none transition-colors placeholder:text-neutral-400 focus:border-black/20 focus:ring-2 focus:ring-theme/10 dark:border-white/10 dark:placeholder:text-neutral-500 dark:focus:border-white/20"
+                  />
                 </SettingsCardBody>
               </div>
               <div className="mt-4 border-t border-black/5 pt-4 dark:border-white/10">

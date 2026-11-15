@@ -14,6 +14,7 @@ export const SITE_CONFIG_KEYS = {
     feedCardVariant: "feed.card_variant",
     headerLayout: "header.layout",
     themeColor: "theme.color",
+    backgroundImage: "background.image",
 } as const;
 
 // Hook to get site configuration
@@ -37,6 +38,7 @@ export function useSiteConfig() {
         feedCardVariant: normalizeFeedCardVariant(config.get<string>(SITE_CONFIG_KEYS.feedCardVariant) || "default"),
         headerLayout: config.get<string>(SITE_CONFIG_KEYS.headerLayout) || "classic",
         themeColor: config.get<string>(SITE_CONFIG_KEYS.themeColor) || "#fc466b",
+        backgroundImage: config.get<string>(SITE_CONFIG_KEYS.backgroundImage) || "",
     };
 }
 
