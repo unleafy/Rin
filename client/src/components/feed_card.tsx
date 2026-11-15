@@ -66,6 +66,7 @@ const FEED_CARD_STYLES: Record<
     FeedCardVariant,
     {
         card: string;
+        cardBg: string;
         imageWrap: string;
         meta: string;
         summary: string;
@@ -73,14 +74,16 @@ const FEED_CARD_STYLES: Record<
     }
 > = {
     default: {
-        card: "my-2 inline-block w-full break-inside-avoid rounded-2xl bg-w p-6 duration-300 bg-button",
+        card: "my-2 w-full break-inside-avoid rounded-2xl bg-w p-6 bg-button duration-300",
+        cardBg: "my-2 w-full break-inside-avoid rounded-2xl border border-black/5 bg-w/95 p-6 shadow-[0_12px_40px_rgb(15_23_42/0.14)] backdrop-blur-md duration-300 dark:border-white/10",
         imageWrap: "",
         meta: "text-gray-400 text-sm",
         summary: "line-clamp-4 text-pretty overflow-hidden dark:text-neutral-500",
         title: "break-words text-xl font-bold text-gray-700 dark:text-white text-pretty overflow-hidden [overflow-wrap:anywhere]",
     },
     editorial: {
-        card: "my-3 inline-block w-full break-inside-avoid overflow-hidden rounded-[28px] border border-black/10 bg-w p-3 shadow-[0_24px_60px_rgba(15,23,42,0.08)] transition-all hover:-translate-y-0.5 hover:shadow-[0_28px_70px_rgba(15,23,42,0.12)] dark:border-white/10",
+        card: "my-3 w-full break-inside-avoid overflow-hidden rounded-[28px] border border-black/10 bg-w p-3 shadow-[0_18px_50px_rgba(15,23,42,0.08)] duration-300 hover:-translate-y-0.5",
+        cardBg: "my-3 w-full break-inside-avoid overflow-hidden rounded-[28px] border border-black/5 bg-w/95 p-3 shadow-[0_18px_50px_rgba(15,23,42,0.14)] backdrop-blur-md duration-300 hover:-translate-y-0.5 dark:border-white/10",
         imageWrap: "mb-3 overflow-hidden rounded-[22px] border border-black/5 dark:border-white/10",
         meta: "text-[12px] font-medium uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400",
         summary: "line-clamp-5 text-pretty text-[15px] leading-7 text-neutral-600 dark:text-neutral-300",
@@ -109,8 +112,9 @@ export function FeedCard({ id, title, avatar, draft, listed, top, summary, hasht
     const safeHashtags = Array.isArray(hashtags) ? hashtags : [];
     const activeVariant = normalizeFeedCardVariant(variant ?? siteConfig.feedCardVariant);
     const styles = FEED_CARD_STYLES[activeVariant];
+    const hasBackground = Boolean(siteConfig.backgroundImage?.trim());
     const body = (
-        <div className={styles.card}>
+        <div className={hasBackground ? styles.cardBg : styles.card}>
             {avatar ? (
                 <div className={styles.imageWrap}>
                     <FeedCardImage src={avatar} variant={activeVariant} />

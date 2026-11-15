@@ -95,13 +95,14 @@ export function TimelinePage() {
 }
 
 export function FeedItem({ id, title, createdAt }: { id: string, title: string, createdAt: Date }) {
+    const siteConfig = useSiteConfig();
     const formatter = new Intl.DateTimeFormat('en-US', { day: '2-digit', month: '2-digit' });
     return (
         <div className="flex min-w-0 flex-row pl-8">
             <div className="flex shrink-0 flex-row items-center">
                 <div className="w-2 h-2 bg-theme rounded-full"></div>
             </div>
-            <div className="m-2 flex min-w-0 flex-1 flex-row items-center space-x-4 rounded-2xl duration-300">
+            <div className={`m-2 flex min-w-0 flex-1 flex-row items-center space-x-4 rounded-2xl duration-300 ${siteConfig.backgroundImage?.trim() ? "border border-black/5 bg-w/95 px-4 py-2 shadow-[0_6px_24px_rgb(15_23_42/0.10)] backdrop-blur-md dark:border-white/10" : ""}`}>
                 <span className="shrink-0 text-sm t-secondary" title={new Date(createdAt).toLocaleString()}>
                     {formatter.format(new Date(createdAt))}
                 </span>

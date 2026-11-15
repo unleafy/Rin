@@ -22,8 +22,8 @@ export function MobileTopHeader({
   showInlineNav?: boolean;
   avatarClassName?: string;
 }) {
-  return (
-    <div className={`flex w-full items-center justify-between gap-3 px-4 py-2 lg:hidden ${isAtTop ? "bg-transparent backdrop-blur-none" : "bg-white/20 backdrop-blur-xl dark:bg-white/[0.03]"}`}>
+  const barContent = (
+    <>
       <div className="flex min-w-0 flex-1 items-center gap-3">
         <BrandLink
           siteConfig={siteConfig}
@@ -47,6 +47,18 @@ export function MobileTopHeader({
         </div>
         <Menu profile={profile} />
       </div>
+    </>
+  );
+
+  return (
+    <div className="lg:hidden">
+      {isAtTop ? (
+        <div className="flex w-full items-center justify-between gap-3 px-4 py-2">{barContent}</div>
+      ) : (
+        <div className={`flex w-full items-center justify-between gap-3 px-4 py-2 ${siteConfig.backgroundImage?.trim() ? "bg-w/85 shadow-[0_8px_30px_rgb(15_23_42/0.08)] backdrop-blur-xl" : "bg-white/20 backdrop-blur-xl"}`}>
+          {barContent}
+        </div>
+      )}
     </div>
   );
 }

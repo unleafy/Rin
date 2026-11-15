@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import { Markdown } from "./markdown";
 import { timeago } from "../utils/timeago";
 import { ImageWithFallback } from "./image-with-fallback";
+import { useSiteConfig } from "../hooks/useSiteConfig";
 
 interface Moment {
     id: number;
@@ -27,10 +28,11 @@ export function MomentItem({
     canManage: boolean
 }) {
     const { t } = useTranslation()
+    const { backgroundImage } = useSiteConfig();
     const { createdAt, updatedAt } = moment;
-    
+
     return (
-        <div className="min-w-0 rounded-lg bg-w p-4">
+        <div className={`min-w-0 rounded-lg p-4 ${backgroundImage?.trim() ? "border border-black/5 bg-w/95 shadow-[0_12px_40px_rgb(15_23_42/0.14)] backdrop-blur-md dark:border-white/10" : "bg-w"}`}>
             <div className="flex min-w-0 justify-between gap-3">
                 <div className="flex min-w-0 items-center space-x-3">
                     <ImageWithFallback

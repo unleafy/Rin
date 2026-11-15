@@ -500,6 +500,11 @@
         "masonry": "A staggered multi-column layout that packs cards by height."
       }
     },
+    "background_image": {
+      "title": "Background image",
+      "desc": "A fixed full-page image behind your content. Glass surfaces refract it. Leave empty to disable.",
+      "empty": "Not set"
+    },
     "theme_color": {
       "title": "Theme color",
       "desc": "Choose the accent color used by buttons, highlights, and interactive elements",
