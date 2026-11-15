@@ -55,7 +55,7 @@ export function MobileTopHeader({
       {isAtTop ? (
         <div className="flex w-full items-center justify-between gap-3 px-4 py-2">{barContent}</div>
       ) : (
-        <div className={`flex w-full items-center justify-between gap-3 px-4 py-2 ${siteConfig.backgroundImage?.trim() ? "bg-w/75 shadow-[0_8px_30px_rgb(15_23_42/0.08)] backdrop-blur-xl" : "bg-white/20 backdrop-blur-xl"}`}>
+        <div className={`flex w-full items-center justify-between gap-3 px-4 py-2 ${siteConfig.backgroundImage?.trim() ? "bg-w/85 shadow-[0_8px_30px_rgb(15_23_42/0.08)] backdrop-blur-xl" : "bg-white/20 backdrop-blur-xl"}`}>
           {barContent}
         </div>
       )}

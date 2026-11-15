@@ -11,7 +11,7 @@ export const classicLayoutDefinition: HeaderLayoutDefinition = {
       <div className="hidden w-full items-center justify-between md:flex">
         <BrandLink siteConfig={siteConfig} className="mr-8 hidden flex-row items-center md:flex" />
         <div className="flex min-w-0 flex-1 items-center justify-center">
-          <div className={`scrollbar-none flex min-w-max flex-row items-center whitespace-nowrap overflow-x-auto rounded-full px-2 shadow-xl shadow-light ${siteConfig.backgroundImage?.trim() ? "bg-w/80 backdrop-blur-xl" : "bg-w"}`}>
+          <div className={`scrollbar-none flex min-w-max flex-row items-center whitespace-nowrap overflow-x-auto rounded-full px-2 shadow-xl shadow-light ${siteConfig.backgroundImage?.trim() ? "bg-w/90 backdrop-blur-xl" : "bg-w"}`}>
             <NavBar menu={false} itemClassName="whitespace-nowrap px-3 py-3 md:p-3 text-[15px]" />
           </div>
         </div>
@@ -26,7 +26,7 @@ export const classicLayoutDefinition: HeaderLayoutDefinition = {
     return (
       <div className="flex w-full flex-row items-center justify-center md:hidden">
         <div className="w-full flex-row items-center justify-center transition-all duration-500">
-          <div className={`flex w-full flex-row items-center rounded-full px-2 shadow-xl shadow-light ${siteConfig.backgroundImage?.trim() ? "bg-w/80 backdrop-blur-xl" : "bg-w"}`}>
+          <div className={`flex w-full flex-row items-center rounded-full px-2 shadow-xl shadow-light ${siteConfig.backgroundImage?.trim() ? "bg-w/90 backdrop-blur-xl" : "bg-w"}`}>
             <BrandLink
               siteConfig={siteConfig}
               compact

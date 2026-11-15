@@ -33,7 +33,7 @@ export const compactLayoutDefinition: HeaderLayoutDefinition = {
         {isAtTop ? (
           <div className="flex items-center justify-between gap-8 px-4 py-3">{barContent}</div>
         ) : (
-          <div className={`flex items-center justify-between gap-8 px-4 py-3 ${siteConfig.backgroundImage?.trim() ? "bg-w/75 shadow-[0_8px_30px_rgb(15_23_42/0.08)] backdrop-blur-xl" : "bg-white/20 backdrop-blur-xl"}`}>
+          <div className={`flex items-center justify-between gap-8 px-4 py-3 ${siteConfig.backgroundImage?.trim() ? "bg-w/85 shadow-[0_8px_30px_rgb(15_23_42/0.08)] backdrop-blur-xl" : "bg-white/20 backdrop-blur-xl"}`}>
             {barContent}
           </div>
         )}
